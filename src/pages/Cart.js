@@ -37,6 +37,17 @@ const ScreenContainer = ({ children }) => (
 )
 
 export const Cart = ({ navigation }) => {
+    const [listState, setListState] = useState([])
+
+    useFocusEffect(React.useCallback(() => {
+      var read_cart = database.ref('orders/' + global.id_code + "/cart");
+
+      read_cart.on("value", (snapshot) => {
+          console.log(snapshot.val())
+          setListState(snapshot.val())
+      })
+    }))
+
     const renderItem = data => (
         <TouchableHighlight
             onPress={() => console.log('You touched me')}
@@ -96,7 +107,7 @@ export const Cart = ({ navigation }) => {
             }
           }>
             <SwipeListView
-                data={readCartFromDatabase(global.id_code)}
+                data={listState}
                 renderItem={renderItem}
             />
           </View>
@@ -142,6 +153,7 @@ function readCartFromDatabase(userId){
     console.log("in function" + userId);
     read_cart.on("value", (snapshot) => {
         console.log(snapshot.val())
+        setListState(snapshot.val())
     })
     return retArr;
 }
