@@ -17,7 +17,6 @@ import QRCode from 'react-native-qrcode-svg';
 
 // Simple usage, defaults for all but the value
 export const Confirmation = ({ navigation }) => {
-    console.log(global.orderid)
     return (
       <View style={styles.container}>
       <LottieView
@@ -26,13 +25,8 @@ export const Confirmation = ({ navigation }) => {
       autoPlay = {true}
       loop = {false}
       />
-      <Text style={styles.success}>Your order was placed successfully!</Text>
-      <Text style={styles.confnumber}>Order Number - {global.orderid}</Text>
-      <Text style={styles.msg}>Show this code on your way out!</Text>
-      <QRCode
-        value = {global.orderid}
-        size={200}
-      />
+      <Text style={styles.success}>Your order has been approved!</Text>
+      <Text style={styles.confnumber}>Order Number - {global.id_code}</Text>
       </View>
     ); 
 }

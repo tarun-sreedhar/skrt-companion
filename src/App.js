@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {BarcodeView} from './pages/BarcodeView';
 import {SignInPage} from './pages/SignInPage';
-import {Cart, useForceUpdate} from './pages/Cart';
+import {Cart} from './pages/Cart';
 import {Profile} from './pages/Profile';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,6 +12,7 @@ import { isLoggedIn } from './pages/SignInPage';
 import {Payment} from "./pages/Payment";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Confirmation } from './pages/Confirmation';
+import {Rejection} from "./pages/Rejection";
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
             <AuthStack.Screen name="SKRT" component={TabManager} options={{headerShown: false}}/>
             <AuthStack.Screen name="Payment" component={Payment}/>
             <AuthStack.Screen name="Confirmation" component={Confirmation}/>
+              <AuthStack.Screen name="Rejection" component={Rejection}/>
           </>
         ) : (
           <>
@@ -31,6 +33,7 @@ export default function App() {
             <AuthStack.Screen name="SKRT" component={TabManager} options={{headerShown: false}}/>
             <AuthStack.Screen name="Payment" component={Payment}/>
             <AuthStack.Screen name="Confirmation" component={Confirmation}/>
+              <AuthStack.Screen name="Rejection" component={Rejection}/>
 
 
           </>
